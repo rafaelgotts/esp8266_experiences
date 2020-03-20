@@ -1,4 +1,4 @@
-import time
+ time
 
 __all__ = ["LCGRandom"]
 
@@ -20,9 +20,9 @@ class LCGRandom(object):
     MODULUS = 2147483647
 
     def __init__(self):
-        self.a = MULTIPLIER
-        self.c = INCREMENT
-        self.m = MODULUS
+        self.a = LCGRandom.MULTIPLIER
+        self.c = LCGRandom.INCREMENT
+        self.m = LCGRandom.MODULUS
         self.xn = time.ticks_cpu()
 
     def random(self):
@@ -49,8 +49,11 @@ class LCGRandom(object):
         idx = int(random() * len(seq))
         return seq[idx]
 
-    def randrange(start, stop, step=1):
+    def randrange(self, start, stop, step=1):
         """ Return a random number of a defined range.
         """
         sequence = [num for num in range(start, stop, step)]
         return choice(sequence)
+
+_inst = LCGRandom()
+random = _inst.random
