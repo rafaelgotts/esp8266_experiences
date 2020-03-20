@@ -1,18 +1,17 @@
 import machine
 import time
 
-def blink(pin=16, blink_time=500):
+def blink(pin=15, blink_time=500):
     """ Blink a specific led for a defined cycle
     """
     pin = machine.Pin(pin, machine.Pin.OUT)
 
-    led_on = pin.value() == 0
-    if led_on:
-        pin.high()
+    if pin.value() == 1:
+        pin.off()
 
-    pin.low()
+    pin.on()
     time.sleep_ms(blink_time)
-    pin.high()
+    pin.off()
 
 
 def blinking(quantity=4, blink_ms=100):

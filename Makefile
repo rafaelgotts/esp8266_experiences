@@ -8,3 +8,6 @@ install:  ## Install project requirements
 
 run-file:  ## Run <file> on board
 	ampy --port /dev/ttyUSB0 run $(file)
+
+shell-board:  ## Run screen to acess python inside the board
+	bash scripts/maintenance/access_serial.sh
